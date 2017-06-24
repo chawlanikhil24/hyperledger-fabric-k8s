@@ -1,0 +1,51 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hyperledger-cli
+  labels:
+    app: hyperledger
+    role: cli
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: hyperledger-cli-pod
+      labels:
+        role: cli
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: cli-container
+          imagePullPolicy: Never
+          image: hyperledger/fabric-peer:latest
+          env:
+            - name: CORE_PEER_ADDRESS
+              value: "cli:7051"
+            - name: CORE_PEER_ADDRESSAUTODETECT
+              value: "false"
+            - name: CORE_SECURITY_ENABLED
+              value: "true"
+            - name: CORE_SECURITY_PRIVACY
+              value: "true"
+            - name: HYPERLEDGER_ROOT_NODE_ADDRESS
+              value: "vp0:7051"
+            - name: HYPERLEDGER_MEMBERSRVC_NODE_ADDRESS
+              value: "member-service:7054"
+            - name: APP_HOME
+              value: "/opt/gopath/src/github.com/hyperledger/fabric/examples/chaincode/go/asset_management/app"
+          args:
+            - /bin/bash
+            - -c
+            - >-
+              cd /opt/gopath/src/github.com/hyperledger/fabric/examples/chaincode/go/asset_management/app;
+              cp /opt/gopath/src/github.com/hyperledger/fabric/peer/core.yaml .;
+              sed -i "s/0.0.0.0/vp0/g" core.yaml;
+              sed -i "s/localhost/member-service/g" core.yaml;
+              sed -i "s/30/60/g" app.go;
+              curl -k -so infiniteloop.sh https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/infiniteloop.sh;
+              chmod +x infiniteloop.sh;
+              ./infiniteloop.sh
+          ports:
+            - containerPort: 22
+            - containerPort: 7051
+            - containerPort: 7052

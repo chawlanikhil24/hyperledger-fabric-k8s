@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hyperledger-member
+  labels:
+    app: hyperledger
+    role: member
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: hyperledger-member-container
+      labels:
+        role: member
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: membersrvc-container
+          imagePullPolicy: Never
+          image: hyperledger/fabric-membersrvc:latest
+          ports:
+            - containerPort: 7054
+          args:
+            - membersrvc
+          env:
+            - name: CORE_LOGGING_SERVER
+              value: debug

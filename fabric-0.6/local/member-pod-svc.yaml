@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: member-service
+  labels:
+    app: hyperledger-member
+spec:
+  type: ClusterIP
+  ports:
+    - name: "membersrvc"
+      targetPort: 7054
+      port: 7054
+  selector:
+    role: member

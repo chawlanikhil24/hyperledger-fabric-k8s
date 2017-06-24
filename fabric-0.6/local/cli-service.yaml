@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cli-service
+  labels:
+    app: hyperledger-cli
+spec:
+  type: NodePort
+  ports:
+    - name: "22"
+      targetPort: 22
+      port: 22
+    - name: "7051"
+      targetPort: 7051
+      port: 7051
+    - name: "7052"
+      targetPort: 7052
+      port: 7052
+  selector:
+    role: cli
+
+
+# containerPort: 22
+# - containerPort: 7051
+# - containerPort: 7052

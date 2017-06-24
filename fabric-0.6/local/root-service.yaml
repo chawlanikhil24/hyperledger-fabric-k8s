@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vp0
+  labels:
+    app: root
+spec:
+  type: ClusterIP
+  ports:
+    - name: "7050"
+      targetPort: 7050
+      port: 7050
+    - name: "7051"
+      targetPort: 7051
+      port: 7051
+    - name: "7052"
+      targetPort: 7052
+      port: 7052
+    - name: "7053"
+      targetPort: 7053
+      port: 7053
+    - name: "7054"
+      targetPort: 7054
+      port: 7054
+    - name: "7055"
+      targetPort: 7055
+      port: 7055
+    - name: "7056"
+      targetPort: 7056
+      port: 7056
+    - name: "7057"
+      targetPort: 7057
+      port: 7057
+    - name: "7058"
+      targetPort: 7058
+      port: 7058
+    - name: "7059"
+      targetPort: 7059
+      port: 7059
+  selector:
+    role: root
+
+
+# containerPort: 22
+# - containerPort: 7051
+# - containerPort: 7052
