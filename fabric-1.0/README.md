@@ -38,4 +38,4 @@ sudo bash run.sh
 **PLEASE DO COME UP WITH YOUR PROBLEMS AND IDEAS TO MAKE IT BETTER**
 
 chawlanikhil24 [@] ROCKET-CHAT
-https://chat.hyperledger.org/direct/FlyingTiger
+https://chat.hyperledger.org/direct/chawlanikhil24
