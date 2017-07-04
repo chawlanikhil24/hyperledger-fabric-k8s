@@ -64,7 +64,7 @@ spec:
       volumes:
         - name: orderer-vol
           hostPath:
-            path: /data/orderer
+            path: /data/driving-files/orderer
 ---
 apiVersion: v1
 kind: Service

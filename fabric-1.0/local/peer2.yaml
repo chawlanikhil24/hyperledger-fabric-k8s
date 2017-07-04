@@ -53,7 +53,7 @@ spec:
             - name: CORE_PEER_PROFILE_ENABLED
               value: "false"
             - name: CORE_PEER_TLS_ENABLED
-              value: "true"
+              value: "false"
             - name: CORE_PEER_TLS_CERT_FILE
               value: "/etc/hyperledger/fabric/tls/server.crt"
             - name: CORE_PEER_TLS_KEY_FILE
@@ -78,7 +78,7 @@ spec:
       volumes:
         - name: fabric-vol
           hostPath:
-            path: /data/fabric-peer
+            path: /data/driving-files/fabric-peer/peer0-org2
 ---
 apiVersion: v1
 kind: Service

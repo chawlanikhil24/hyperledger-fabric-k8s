@@ -58,16 +58,16 @@ spec:
       volumes:
         - name: crypto
           hostPath:
-            path: /data/dockercfiles/hyperledger/1.0/e2e_cli/crypto-config
+            path: /data/driving-files/crypto-config
         - name: scripts
           hostPath:
-            path: /data/dockercfiles/hyperledger/1.0/scripts
+            path: /data/driving-files/scripts
         - name: channel-artifacts
           hostPath:
-            path: /data/dockercfiles/hyperledger/1.0/e2e_cli/channel-artifacts
+            path: /data/driving-files/channel-artifacts
         - name: configtx
           hostPath:
-            path: /data/dockercfiles/hyperledger/1.0/e2e_cli/configtx.yaml
+            path: /data/driving-files/configtx.yaml
         - name: crypto-config
           hostPath:
-            path: /data/dockercfiles/hyperledger/1.0/e2e_cli/crypto-config.yaml
+            path: /data/driving-files/crypto-config.yaml
