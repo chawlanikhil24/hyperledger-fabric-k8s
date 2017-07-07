@@ -17,7 +17,7 @@ spec:
       containers:
         - name: ca-container
           imagePullPolicy: Never
-          image: hyperledger/fabric-ca:x86_64-1.0.0-rc1
+          image: hyperledger/fabric-ca:latest
           ports:
             - containerPort: 7054
           command:

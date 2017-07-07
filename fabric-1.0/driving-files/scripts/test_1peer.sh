@@ -78,7 +78,7 @@ instantiateChaincode () {
 	res=$?
 	cat log.txt
 	verifyResult $res "Chaincode instantiation on pee0.org1 on channel '$CHANNEL_NAME' failed"
-	echo_g "=========== Chaincode Instantiation on peer0.org1 on channel '$CHANNEL_NAME' is successful ========== "
+	echo_g "=========== Chaincode Instantiation on peer0-org1 on channel '$CHANNEL_NAME' is successful ========== "
 	echo_b "Instantiate spent $(($(date +%s)-starttime)) secs"
 	echo
 }
@@ -90,7 +90,7 @@ chaincodeQuery () {
   while test "$(($(date +%s)-starttime))" -lt "$TIMEOUT" -a $rc -ne 0
   do
      sleep 3
-     echo_b "Attempting to Query peer0.org1 ...$(($(date +%s)-starttime)) secs"
+     echo_b "Attempting to Query peer0-org1 ...$(($(date +%s)-starttime)) secs"
      peer chaincode query -C ${CHANNEL_NAME} -n mycc -c '{"Args":["query","a"]}' >&log.txt
      test $? -eq 0 && VALUE=$(cat log.txt | awk '/Query Result/ {print $NF}')
      test "$VALUE" = "$1" && let rc=0
@@ -98,10 +98,10 @@ chaincodeQuery () {
   echo
   cat log.txt
   if test $rc -eq 0 ; then
-	echo_g "===================== Query on peer0.org1 on channel '$CHANNEL_NAME' is successful ===================== "
+	echo_g "===================== Query on peer0-org1 on channel '$CHANNEL_NAME' is successful ===================== "
 
   else
-	echo_r "!!!!!!!!!!!!!!! Query result on peer0.org1 is INVALID !!!!!!!!!!!!!!!!"
+	echo_r "!!!!!!!!!!!!!!! Query result on peer0-org1 is INVALID !!!!!!!!!!!!!!!!"
         echo_r "================== ERROR !!! FAILED to execute MVE test =================="
 	echo
   fi
@@ -111,8 +111,8 @@ chaincodeInvoke () {
 	peer chaincode invoke -o orderer.example.com:7050 -C ${CHANNEL_NAME} -n mycc -c '{"Args":["invoke","a","b","10"]}' >&log.txt
 	res=$?
 	cat log.txt
-	verifyResult $res "Invoke execution on peer0.org1 failed "
-	echo_g "========= Invoke transaction on peer0.org1 on channel '$CHANNEL_NAME' is successful ===== "
+	verifyResult $res "Invoke execution on peer0-org1 failed "
+	echo_g "========= Invoke transaction on peer0-org1 on channel '$CHANNEL_NAME' is successful ===== "
 	echo
 }
 

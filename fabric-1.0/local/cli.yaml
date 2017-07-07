@@ -17,7 +17,7 @@ spec:
       containers:
         - name: cli-container
           imagePullPolicy: Never
-          image: hyperledger/fabric-tools:x86_64-1.0.0-rc1
+          image: hyperledger/fabric-tools:latest
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric/peer
           tty: true
           volumeMounts:

@@ -17,7 +17,7 @@ spec:
       containers:
         - name: orderer-container
           imagePullPolicy: Never
-          image: hyperledger/fabric-orderer:x86_64-1.0.0-rc1
+          image: hyperledger/fabric-orderer:latest
           volumeMounts:
             - mountPath: /var/hyperledger/orderer
               name: orderer-vol

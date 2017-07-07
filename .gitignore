@@ -1,0 +1,5 @@
+./fabric-1.0/driving-files/crypto-config/*
+./fabric-1.0/driving-files/channel-artifacts/*
+./fabric-1.0/driving-files/fabric-peer/*
+ ./fabric-1.0/driving-files/orderer/*
+

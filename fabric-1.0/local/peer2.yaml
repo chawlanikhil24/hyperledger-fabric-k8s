@@ -11,8 +11,9 @@ spec:
   replicas: 1
   template:
     metadata:
-      name: hyperledger-peer-pod
+      name: peer-pod2
       labels:
+        app: hyperledger
         role: peer
         peer-id: "0"
         org: "2"
@@ -102,6 +103,7 @@ spec:
       targetPort: 7053
       port: 7053
   selector:
+    app: hyperledger
     role: peer
     peer-id: "0"
     org: "2"
