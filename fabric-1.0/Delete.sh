@@ -1,5 +1,5 @@
 #This is a one step script to delete all the deployment and
-#services executed during the executiong of the cluster
+#services executed during the execution of the cluster
 
 kubectl delete deployment hyperledger-fabric-ca
 kubectl delete deployment hyperledger-fabric-cli
