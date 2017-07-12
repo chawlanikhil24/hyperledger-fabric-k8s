@@ -16,8 +16,8 @@ spec:
       restartPolicy: Always
       containers:
         - name: cli-container
-          imagePullPolicy: Never
-          image: hyperledger/fabric-tools:latest
+          imagePullPolicy: IfNotPresent
+          image: hyperledger/fabric-peer:latest
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric/peer
           tty: true
           volumeMounts:
