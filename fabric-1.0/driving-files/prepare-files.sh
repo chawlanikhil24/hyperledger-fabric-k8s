@@ -8,9 +8,9 @@
 
 rm -rf  orderer/*
 rm -rf fabric-peer/peer0-org1/*
-rm -rf  fabric-peer/peer1-org1/*
-rm -rf  fabric-peer/peer1-org1/*
 rm -rf fabric-peer/peer1-org1/*
+rm -rf fabric-peer/peer0-org2/*
+rm -rf fabric-peer/peer1-org2/*
 
 cp -r ./channel-artifacts/genesis.block ./orderer/orderer.genesis.block
 cp -r ./crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/* ./orderer/
