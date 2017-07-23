@@ -29,21 +29,23 @@ spec:
               name: fabric-vol-msp
             - mountPath: /etc/hyperledger/fabric/tls
               name: fabric-vol-tls
+            - mountPath: /var/run/docker.sock
+              name: docker-sock
           env:
             - name: CORE_VM_ENDPOINT
-              value: unix:///host/var/run/docker.sock
+              value: unix:///var/run/docker.sock
             - name: CORE_PEER_ID
               value: "peer1-org2"
             - name: CORE_PEER_ADDRESS
               value: "peer1-org2:7051"
-            #- name: CORE_PEER_CHAINCODELISTENADDRESS
-            #  value: "peer1-org2:7052"
+         #   - name: CORE_PEER_CHAINCODELISTENADDRESS
+         #     value: "peer1-org2:7052"
             - name: CORE_PEER_GOSSIP_EXTERNALENDPOINT
               value: "peer1-org2:7051"
             - name: CORE_PEER_GOSSIP_BOOTSTRAP
               value: "peer0-org2:7051"
             - name: CORE_PEER_LOCALMSPID
-              value: "org2MSP"
+              value: "Org2MSP"
             - name: CORE_PEER_GOSSIP_ORGLEADER
               value: "false"
             - name: CORE_LOGGING_LEVEL
@@ -69,7 +71,7 @@ spec:
           ports:
             #- containerPort: 7050
             - containerPort: 7051
-            #- containerPort: 7052
+            - containerPort: 7052
             - containerPort: 7053
             # - containerPort: 7054
             # - containerPort: 7055
@@ -96,6 +98,9 @@ spec:
         - name: fabric-vol-tls
           hostPath:
             path: /data/driving-files/fabric-peer/peer1-org2/tls
+        - name: docker-sock
+          hostPath:
+            path: /var/run/docker.sock
 ---
 apiVersion: v1
 kind: Service
@@ -112,9 +117,9 @@ spec:
     - name: "7051"
       targetPort: 7051
       port: 7051
-    #- name: "7052"
-    #  targetPort: 7052
-    #  port: 7052
+    - name: "7052"
+      targetPort: 7052
+      port: 7052
     - name: "7053"
       targetPort: 7053
       port: 7053

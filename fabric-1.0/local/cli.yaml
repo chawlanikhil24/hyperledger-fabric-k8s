@@ -31,7 +31,12 @@ spec:
               name: configtx
             - mountPath: /etc/hyperledger/fabric/crypto-config.yaml
               name: crypto-config
+            - mountPath: /var/run/docker.sock
+              name: docker-sock
+              readOnly: false
           env:
+            - name: CORE_VM_ENDPOINT
+              value: unix:///var/run/docker.sock
             - name: CORE_PEER_ID
               value: fabric-cli
             - name: CORE_LOGGING_LEVEL
@@ -71,3 +76,9 @@ spec:
         - name: crypto-config
           hostPath:
             path: /data/driving-files/crypto-config.yaml
+        - name: docker-sock
+          hostPath:
+            path: /var/run/docker.sock
+        # - name: kube
+        #   hostPath:
+        #     path: /data/packk
