@@ -42,6 +42,8 @@ spec:
               value: "peer0-org1:7051"
             - name: CORE_PEER_GOSSIP_BOOTSTRAP
               value: "peer0-org1:7051"
+            - name: CHAINCODE-LISTEN-ADDRESS
+              value: "0.0.0.0:8000"
             - name: CORE_PEER_LOCALMSPID
               value: "Org1MSP"
             - name: CORE_PEER_GOSSIP_ORGLEADER
