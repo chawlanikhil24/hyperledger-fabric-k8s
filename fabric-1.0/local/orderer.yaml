@@ -16,8 +16,8 @@ spec:
       restartPolicy: Always
       containers:
         - name: orderer-container
-          imagePullPolicy: Never
-          image: hyperledger/fabric-orderer:latest
+          # imagePullPolicy: Never
+          image: hyperledger/fabric-orderer:x86_64-1.0.0
           volumeMounts:
             - mountPath: /var/hyperledger/orderer
               name: orderer-vol

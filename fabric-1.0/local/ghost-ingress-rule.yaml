@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ghost
+spec:
+  rules:
+    - host: ghost.192.168.99.100.nip.io
+      http:
+        paths:
+          - backend:
+              serviceName: ghost
+              servicePort: 2368
+
+  # This is the main thing which I've defined.
+  # WHat things to be kept in mind:
+  #     1 host : the format of the name is : <service-name>.192.168.99.100.nip.io
+  #     2 please mind nip.io is a wild card
+  #     3 we are making http requests
+  #     4 now the last thing is backend
+  #     5 In backend, you need to mention the service name which is exposed at ClusterIP level and its port

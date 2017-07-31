@@ -17,7 +17,7 @@ spec:
       containers:
         - name: cli-container
           imagePullPolicy: IfNotPresent
-          image: hyperledger/fabric-tools:latest #The image is changed to fabric-tools in latest version of e2e_cli samples
+          image: hyperledger/fabric-tools:x86_64-1.0.0 #The image is changed to fabric-tools in latest version of e2e_cli samples
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric/peer
           tty: true
           volumeMounts:

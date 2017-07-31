@@ -123,6 +123,13 @@ installChaincode () {
 instantiateChaincode () {
 	PEER=$1
 	setGlobals $PEER
+	CORE_PEER_CHAINCODELISTENADDRESS=$PEER:8000
+	echo *****************
+	echo chaincode instantiation
+	echo $PEER
+	echo CORE_PEER_CHAINCODELISTENADDRESS
+	echo *****************
+	echo $PEER
 	# while 'peer chaincode' command can get the orderer endpoint from the peer (if join was successful),
 	# lets supply it directly as we know it using the "-o" option
 	if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
@@ -164,6 +171,7 @@ installChaincode 2
 
 echo_b "Install chaincode on org2/peer1..."
 installChaincode 3
+
 
 # Instantiate chaincode on Peer0/Org1
 # Instantiate can only be executed once on any node

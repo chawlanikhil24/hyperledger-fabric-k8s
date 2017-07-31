@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: peer0-org1
+spec:
+  rules:
+    - host: peer0-org1.192.168.99.100.nip.io
+      http:
+        paths:
+          - backend:
+              serviceName: peer0-org1
+              servicePort: 8000

@@ -22,24 +22,22 @@ spec:
       containers:
         - name: peer0-org2-container
           imagePullPolicy: IfNotPresent
-          image: hyperledger/fabric-peer:latest
+          image: hyperledger/fabric-peer:x86_64-1.0.0
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric/peer
           volumeMounts:
             - mountPath: /etc/hyperledger/fabric/msp
               name: fabric-vol-msp
             - mountPath: /etc/hyperledger/fabric/tls
               name: fabric-vol-tls
-            - mountPath: /var/run/docker.sock
+            - mountPath: /host/var/run/docker.sock
               name: docker-sock
           env:
             - name: CORE_VM_ENDPOINT
-              value: unix:///var/run/docker.sock
+              value: unix:///host/var/run/docker.sock
             - name: CORE_PEER_ID
               value: "peer0-org2"
             - name: CORE_PEER_ADDRESS
               value: "peer0-org2:7051"
-           # - name: CORE_PEER_CHAINCODELISTENADDRESS
-           #   value: "peer0-org2:7052"
             - name: CORE_PEER_GOSSIP_EXTERNALENDPOINT
               value: "peer0-org2:7051"
             - name: CORE_PEER_GOSSIP_BOOTSTRAP
@@ -51,7 +49,7 @@ spec:
             - name: CORE_LOGGING_LEVEL
               value: "DEBUG"
             - name: CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE
-              value: "10_default"
+              value: "bridge"
             - name: CORE_PEER_GOSSIP_USELEADERELECTION
               value: "true"
             - name: CORE_PEER_GOSSIP_ORGLEADER
@@ -73,7 +71,7 @@ spec:
             - containerPort: 7051
             - containerPort: 7052
             - containerPort: 7053
-            # - containerPort: 7054
+            - containerPort: 8001
             # - containerPort: 7055
             # - containerPort: 7056
             # - containerPort: 7057
@@ -123,6 +121,9 @@ spec:
     - name: "7053"
       targetPort: 7053
       port: 7053
+    - name: "chaincode-listen-address"
+      targetPort: 8001
+      port: 8001
   selector:
     app: hyperledger
     role: peer
