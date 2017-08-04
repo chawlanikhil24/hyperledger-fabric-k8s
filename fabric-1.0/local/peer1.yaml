@@ -44,8 +44,10 @@ spec:
               value: "peer0-org1:7051"
             - name: CORE_PEER_LOCALMSPID
               value: "Org1MSP"
-            - name: CHAINCODE-LISTEN-ADDRESS
-              value: "0.0.0.0:8000"
+            - name: CHAINCODE_LISTEN_ADDRESS
+              value: "10.0.0.180:8000"
+            - name: CORE_VM_HOSTCONFIG_DNS
+              value: 139.59.77.160
             - name: CORE_PEER_GOSSIP_ORGLEADER
               value: "false"
             - name: CORE_LOGGING_LEVEL

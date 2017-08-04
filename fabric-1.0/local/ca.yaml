@@ -25,20 +25,20 @@ spec:
             - start
             - -b
             - admin:adminpw
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: ca
-  labels:
-    app: hyperledger
-spec:
-  type: NodePort
-  ports:
-    - name: "ca"
-      port: 7054
-      targetPort: 7054
-      nodePort: 30002
-  selector:
-    app: hyperledger
-    role: ca
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: ca
+#   labels:
+#     app: hyperledger
+# spec:
+#   type: NodePort
+#   ports:
+#     - name: "ca"
+#       port: 7054
+#       targetPort: 7054
+#       nodePort: 30002
+#   selector:
+#     app: hyperledger
+#     role: ca

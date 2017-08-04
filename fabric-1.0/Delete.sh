@@ -9,9 +9,9 @@ kubectl delete deployment hyperledger-peer0-org2
 kubectl delete deployment hyperledger-peer1-org1
 kubectl delete deployment hyperledger-peer1-org2
 
-kubectl delete svc orderer-service
-kubectl delete svc peer0-org1
-kubectl delete svc peer1-org1
-kubectl delete svc peer0-org2
-kubectl delete svc peer1-org2
-kubectl delete svc ca
+# kubectl delete svc orderer-service
+# kubectl delete svc peer0-org1
+# kubectl delete svc peer1-org1
+# kubectl delete svc peer0-org2
+# kubectl delete svc peer1-org2
+# kubectl delete svc ca
