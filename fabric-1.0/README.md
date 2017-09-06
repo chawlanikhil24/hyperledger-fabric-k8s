@@ -10,38 +10,47 @@ This repository is composed of manifests which will deploy:
 ### How to deploy?
 Note: This guide assumes that you already have running Kubernetes Cluster with a master and n-minions.
 
-###--Steps to Deploy--
 
-Prepare crypto-config.yaml and configtx.yaml in "driving-files" Directory.
+1. Prepare crypto-config.yaml and configtx.yaml in "driving-files" Directory.
 
-Run "generateArtifacts.sh" script in "driving-files" directory to create "orderer.genesis.block"
+2. Run "generateArtifacts.sh" script in "driving-files" directory to create "orderer.genesis.block"
+    ```
+    $ cd driving-files
+    $ bash generateArtifacts.sh <channel-name>
 
-$ cd driving-files
-$ bash generateArtifacts.sh <channel-name>
+    note: If you don't wish to provide a channel-name, then
+    by default, genesis block will be created for a channel name "mychannel"
+    ```
 
-note: If you don't wish to provide a channel-name, then
-by default, genesis block will be created for a channel name "mychannel"
-Now, all the artifacts are generated, finally run: $ bash prepare-files.sh
+3. Now, all the artifacts are generated, finally run:
+    ```$ bash prepare-files.sh```
 
-Now, Copy "driving-files" directory to all the nodes, i.e. Master along with all the Minions.
+4. Now, Copy "driving-files" directory to all the nodes, i.e.
+    Master along with all the Minions.
 
-On Master, run "run.sh" $ bash run.sh
+5. On Master, run "run.sh"
+    ```$ bash run.sh```
 
-Now, Kube-DNS and Nginx Stream Proxy has been setted up.
+6. Now, Kube-DNS and Nginx Stream Proxy has been setted up.
 
-Setting up the environment variables $ export NGINX_PROXY_DNS=<your master-node ip-address>
+7. Setting up the environment variables
+```$ export NGINX_PROXY_DNS=<your master-node ip-address>```
 
-Add this setting to Docker running on all nodes
+8. Add this setting to Docker running on all nodes
+ ``` Environment=DOCKER_OPT_DNS=--dns=<Master node   IP-address>
 
+    ExecStart=/usr/bin/dockerd -H fd:// \
+    $DOCKER_OPTS $DOCKER_OPT_BIP $DOCKER_OPT_MTU \
+    $DOCKER_OPT_DNS
+```
 
-   ExecStart=/usr/bin/dockerd -H fd:// \
-   $DOCKER_OPTS $DOCKER_OPT_BIP $DOCKER_OPT_MTU \
-   $DOCKER_OPT_DNS
-   
-Now, time to restart the docker daemon $ systemctl daemon-reload && systemctl restart docker
+9. Now, time to restart the docker daemon
+```$ systemctl daemon-reload && systemctl restart docker```
 
-Deploy the cluster $ bash run deploy.sh---
+10. Deploy the cluster
+```$ bash run deploy.sh```
 
+---
 **PLEASE DO COME UP WITH YOUR PROBLEMS AND IDEAS TO MAKE IT BETTER**
 
 chawlanikhil24 [@] ROCKET-CHAT
